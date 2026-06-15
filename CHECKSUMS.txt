@@ -1,0 +1,21 @@
+SRW: OG Gaiden — English Translation Patch v73
+================================================
+
+REQUIRED SOURCE (your own JP dump — SLPS-25836)
+  size  4666294272
+  md5   cb7dc4485f46f220c46095c966a3aad0
+  sha1  2891231bc85603d420c35cda55285d5ecb781f1b
+
+PATCH FILE
+  name  SRW_OG_Gaiden_EN_v73.xdelta
+  size  3461398
+  md5   43a4d71c4be30f95d0f56f5242d9709f
+  sha1  9d9acd9d3f1abdf55691d67fd30c8bd78582bab2
+
+RESULT (your patched ISO should match)
+  size  4666294272
+  md5   3f372ca65ead7d63206a415cfb4ce312
+  sha1  acf0ce491d03f92565206cf9f041d9f7b0b35a3f
+  game CRC (PCSX2)  43B89A04
+
+Apply:   xdelta3 -d -s "<your JP iso>" SRW_OG_Gaiden_EN_v73.xdelta OG_Gaiden_EN_v73.iso
