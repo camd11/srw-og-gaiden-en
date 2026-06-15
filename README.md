@@ -1,12 +1,22 @@
 # Super Robot Taisen: Original Generation Gaiden — English Translation Patch
 
-**Version:** v73 · **Platform:** PlayStation 2 · **Patch format:** xdelta3
+**Version:** 0.1 (build v73) · **Platform:** PlayStation 2 · **Patch format:** xdelta3
 
-This is a complete, fan-made **English translation** of the PlayStation 2 game
+This is a fan-made **English translation** of the PlayStation 2 game
 *Super Robot Taisen: Original Generation Gaiden* (スーパーロボット大戦OG ジ・インスペクター 外伝 —
 JP retail, serial **SLPS-25836**). As far as we can determine (June 2026), no other complete
 English translation of this title exists, so this may be the first. (If you find another, great —
 please let us know.)
+
+> ## ⚠️ This is a 0.1 playtest release
+> The whole game is translated and playable end to end, but **this version has not been fully
+> playtested**. Expect rough edges — typos, occasional text that overflows its box, a stray
+> untranslated string, or a scene that needs a second look. **That's where you come in.**
+>
+> **Please report anything you find** so it can be fixed in the next release →
+> [open an issue](https://github.com/camd11/srw-og-gaiden-en/issues). A screenshot + roughly where it
+> happened (stage / menu / battle) is incredibly helpful. Bug reports, suggested wording, and
+> general feedback are all welcome.
 
 > **You must supply your own legally-dumped copy of the Japanese disc.** This patch contains only the
 > *changed bytes* (the translation) — no copyrighted game data. It is useless without the original ISO.
@@ -104,6 +114,20 @@ If it matches, the patch applied perfectly.
 - If you import a **save file made on the original Japanese game** mid-battle, some objective text baked
   into that save can show Japanese. Start a **New Game** on the patched ISO for the fully-English
   experience.
+
+---
+
+## Reporting issues & feedback
+
+This is **0.1** — your playtesting directly shapes the next release. If you hit anything off:
+
+- **Open an issue:** https://github.com/camd11/srw-og-gaiden-en/issues
+- Include, if you can: a **screenshot**, **where** it happened (stage / menu / battle screen), and
+  whether you were on a **New Game** or an imported save.
+- Typos, awkward phrasing, text that runs off the box, untranslated bits, crashes, suggested better
+  wording — all of it is welcome.
+
+Fixes will be rolled into the next patch version.
 
 ---
 
