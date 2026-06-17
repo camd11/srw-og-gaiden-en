@@ -1,6 +1,6 @@
 # Super Robot Taisen: Original Generation Gaiden — English Translation Patch
 
-**Version:** 0.1 (build v73) · **Platform:** PlayStation 2 · **Patch format:** xdelta3
+**Version:** 0.2 · **Platform:** PlayStation 2 · **Patch format:** xdelta3
 
 This is a fan-made **English translation** of the PlayStation 2 game
 *Super Robot Taisen: Original Generation Gaiden* (スーパーロボット大戦OG ジ・インスペクター 外伝 —
@@ -8,15 +8,16 @@ JP retail, serial **SLPS-25836**). As far as we can determine (June 2026), no ot
 English translation of this title exists, so this may be the first. (If you find another, great —
 please let us know.)
 
-> ## ⚠️ This is a 0.1 playtest release
-> The whole game is translated and playable end to end, but **this version has not been fully
-> playtested**. Expect rough edges — typos, occasional text that overflows its box, a stray
-> untranslated string, or a scene that needs a second look. **That's where you come in.**
+> ## 0.2 — defect-fix release
+> 0.2 is a fixes pass over the 0.1 playtest: the chapter-intro splash screens are now in English, the
+> menu/UI spacing was corrected, and a long list of status-screen and battle-overlay glitches from 0.1
+> were fixed (see `CHANGELOG.md`). The whole game is translated and playable end to end.
 >
-> **Please report anything you find** so it can be fixed in the next release →
+> It's still a young release with a few **known cosmetic rough edges** (see *Known issues* below), and
+> there are surely more we haven't caught. **Please report anything you find** →
 > [open an issue](https://github.com/camd11/srw-og-gaiden-en/issues). A screenshot + roughly where it
-> happened (stage / menu / battle) is incredibly helpful. Bug reports, suggested wording, and
-> general feedback are all welcome.
+> happened (stage / menu / battle) is incredibly helpful. Bug reports, suggested wording, and general
+> feedback are all welcome.
 
 > **You must supply your own legally-dumped copy of the Japanese disc.** This patch contains only the
 > *changed bytes* (the translation) — no copyrighted game data. It is useless without the original ISO.
@@ -31,8 +32,8 @@ please let us know.)
   the battle/map overlays (Unit Stats, HP/EN/Will/SP, OFFENSE/DEFENSE/etc.).
 - **In-battle text** — pilot battle barks, support-attack/defense cut-in banners
   (SIMULTANEOUS / ASSIST / EXECUTE ATTACK, SHIELD, SUPPORT ATTACK, SUPPORT DEFENSE), HUD badges.
-- **Art / logos** — the title logo, intermission/sortie banners, card-mode menus, and assorted
-  menu sprites redrawn in English.
+- **Art / logos** — the title logo, the chapter-intro splash cards ("Episode N" + each chapter title),
+  intermission/sortie banners, card-mode menus, and assorted menu sprites redrawn in English.
 - **Post-game / omake** content.
 
 Goal of the project: **no Japanese left on screen** during normal play.
@@ -58,10 +59,10 @@ source). Re-dump from your own disc with a tool like ImgBurn or a redump-style d
 
 | | |
 |---|---|
-| File | `SRW_OG_Gaiden_EN_v73.xdelta` |
-| Size | 3,461,398 bytes |
-| MD5 | `43a4d71c4be30f95d0f56f5242d9709f` |
-| SHA1 | `9d9acd9d3f1abdf55691d67fd30c8bd78582bab2` |
+| File | `SRW_OG_Gaiden_EN_v0_2.xdelta` |
+| Size | 3,690,448 bytes |
+| MD5 | `0446880b10bcf5cb8db37f2e2403a74e` |
+| SHA1 | `de737abf8ef34a22c6b4b52486d8517391e6312d` |
 
 ---
 
@@ -72,13 +73,13 @@ You need **xdelta3** (or a GUI front-end for it).
 ### Easiest — GUI (Windows): Delta Patcher
 1. Download **Delta Patcher** (by Phoenix / "DeltaPatcher").
 2. *Original file* → your JP `SLPS-25836` ISO.
-3. *XDelta patch* → `SRW_OG_Gaiden_EN_v73.xdelta`.
+3. *XDelta patch* → `SRW_OG_Gaiden_EN_v0_2.xdelta`.
 4. Click **Apply patch**. It writes a new patched ISO next to the original.
 
 ### Command line (Windows / macOS / Linux)
 ```bash
 # from a folder containing both the patch and your JP ISO
-xdelta3 -d -s "SLPS-25836 (your JP dump).iso" SRW_OG_Gaiden_EN_v73.xdelta "OG_Gaiden_EN_v73.iso"
+xdelta3 -d -s "SLPS-25836 (your JP dump).iso" SRW_OG_Gaiden_EN_v0_2.xdelta "OG_Gaiden_EN_v0_2.iso"
 ```
 - `-d` = decode/apply, `-s` = source (the original JP ISO).
 - Install xdelta3: Windows → download the xdelta3 binary; macOS → `brew install xdelta`;
@@ -90,8 +91,8 @@ The patched ISO should match:
 | | |
 |---|---|
 | Size | 4,666,294,272 bytes |
-| MD5 | `3f372ca65ead7d63206a415cfb4ce312` |
-| SHA1 | `acf0ce491d03f92565206cf9f041d9f7b0b35a3f` |
+| MD5 | `5451d7dd4b6ec9eb00fd8b7d89f07acc` |
+| SHA1 | `702b066a9b6a0fc97e1ae92824432542f8cc9826` |
 
 If it matches, the patch applied perfectly.
 
@@ -101,7 +102,7 @@ If it matches, the patch applied perfectly.
 
 - **Emulator (PCSX2):** load the patched ISO. The translation was developed and verified on PCSX2.
   No special settings are required for the text to display in English (it renders straight from the
-  disc). The game's CRC after patching is `43B89A04`.
+  disc). The game's CRC after patching is `4EDB8F5B`.
 - **Real hardware:** the patched ISO can be burned / loaded via the usual PS2 backup methods. This is
   a same-size, in-place patch, so it behaves like the original disc on real hardware.
 
@@ -109,8 +110,16 @@ If it matches, the patch applied perfectly.
 
 ## Known issues / scope notes
 
-- A handful of deep-menu and developer/debug strings may remain Japanese; normal story + battle play
-  is fully English.
+These are minor and cosmetic — normal story + battle play is fully English. Targeted for the next patch:
+
+- **Chapter-1 splash** edges look a little rough/banded (a render-quality artifact on the low-colour
+  early title cards; a simpler flat render is planned).
+- **Objective screen:** long objective lines wrap early, and the "Objective" / chapter-title header is
+  slightly cramped.
+- **Battle (map) menu:** the menu items and the Turn / Funds / Skill-Points readout sit slightly off.
+- A small **footer button-hint label** (the △ "Details" hint on the unit-status/list screens) shows a
+  few garbled pixels.
+- A handful of deep-menu and developer/debug strings may remain Japanese.
 - If you import a **save file made on the original Japanese game** mid-battle, some objective text baked
   into that save can show Japanese. Start a **New Game** on the patched ISO for the fully-English
   experience.
@@ -119,7 +128,7 @@ If it matches, the patch applied perfectly.
 
 ## Reporting issues & feedback
 
-This is **0.1** — your playtesting directly shapes the next release. If you hit anything off:
+Your playtesting directly shapes the next release. If you hit anything off:
 
 - **Open an issue:** https://github.com/camd11/srw-og-gaiden-en/issues
 - Include, if you can: a **screenshot**, **where** it happened (stage / menu / battle screen), and
