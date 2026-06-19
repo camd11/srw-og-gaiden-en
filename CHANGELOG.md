@@ -1,5 +1,25 @@
 # Changelog
 
+## 0.2.1 (June 2026) — post-0.2 playtest polish
+
+A small fixes pass on top of 0.2. Patch: `SRW_OG_Gaiden_EN_v0_2_1.xdelta` (see `CHECKSUMS.txt`;
+round-trip verified). All three items below were flagged as "known cosmetic" in 0.2 and are now fixed.
+
+- **Chapter splash titles redrawn crisp flat-white** on the black card, replacing the low-contrast,
+  banded rendering on the early low-colour cards that looked rough in 0.2.
+- **Battle command-menu labels now fit their buttons.** "Battle Report" → "Records" and "Objectives" →
+  "Objective" no longer overflow their JP-sized button frames, and the status line "Skill Points" was
+  shortened to "Skill Pts" so it no longer collides with its number.
+- **In-battle Objective screen now uses the full panel width.** The win/loss/skill conditions previously
+  wrapped to only ~1/3 of the wide green panel ("1. Destroy all / enemies."). The cause was hard
+  line-breaks (sized for a narrow ~90px width) baked into the objective condition text in `MAP.BIN`.
+  Fixed by **MAP pointer-table relocation**: each condition is re-wrapped with full-width spaces and
+  moved into unused free space inside its own stage block, with its pointer-table entry repointed. This
+  is a pure data change — no runtime code, no crash risk — and keeps `MAP.BIN` byte-for-byte the same
+  size. 179 conditions across 41 stage blocks are fixed; the screen now reads e.g.
+  "1. Destroy all enemies." / "1. An allied unit is shot down." / "- Meet the victory conditions within /
+  3 turns." on full-width lines. (Verified on a fresh boot through the Stage-1 battle.)
+
 ## 0.2 (June 2026) — defect-fix pass over 0.1
 
 Fixes found during the 0.1 playtest, validated textures-OFF on the final ISO (no PCSX2 texture pack):

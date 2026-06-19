@@ -1,25 +1,25 @@
-# SRW:OG Gaiden EN — 0.2 (public defect-fix release, June 2026)
+# SRW:OG Gaiden EN — 0.2.1 (public playtest-polish release, June 2026)
 
 ## Source (JP retail dump, SLPS-25836) — required base for the patch
 size  4666294272
 md5   cb7dc4485f46f220c46095c966a3aad0
 sha1  2891231bc85603d420c35cda55285d5ecb781f1b
 
-## Result ISO (after applying the 0.2 patch)
+## Result ISO (after applying the 0.2.1 patch)
 size  4666294272
-md5   5451d7dd4b6ec9eb00fd8b7d89f07acc
-sha1  702b066a9b6a0fc97e1ae92824432542f8cc9826
+md5   8e11a4dd968518e6d62d173e72b0831f
+sha1  0b3ab9180c6c72439ca555d7b44155fd761b32ac
 game CRC (PCSX2)  4EDB8F5B
 
 ## Patch
-file  SRW_OG_Gaiden_EN_v0_2.xdelta
-size  3690448
-md5   0446880b10bcf5cb8db37f2e2403a74e
-sha1  de737abf8ef34a22c6b4b52486d8517391e6312d
+file  SRW_OG_Gaiden_EN_v0_2_1.xdelta
+size  3688467
+md5   5b332ab75e7e0f63b424e5c8d76f6e41
+sha1  ca6ea89b2bc95cb5b0547ffd43381077ffeefff6
 
 ## Apply
-xdelta3 -d -s "Super Robot Taisen - Original Generation Gaiden [J].iso" SRW_OG_Gaiden_EN_v0_2.xdelta out.iso
+xdelta3 -d -s "Super Robot Taisen - Original Generation Gaiden [J].iso" SRW_OG_Gaiden_EN_v0_2_1.xdelta out.iso
 
 ## Round-trip
 Verified: applying the patch to the JP base above reproduces the result ISO byte-for-byte
-(decoded md5 == 5451d7dd4b6ec9eb00fd8b7d89f07acc).
+(decoded md5 == 8e11a4dd968518e6d62d173e72b0831f).

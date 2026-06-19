@@ -1,6 +1,6 @@
 # Super Robot Taisen: Original Generation Gaiden — English Translation Patch
 
-**Version:** 0.2 · **Platform:** PlayStation 2 · **Patch format:** xdelta3
+**Version:** 0.2.1 · **Platform:** PlayStation 2 · **Patch format:** xdelta3
 
 This is a fan-made **English translation** of the PlayStation 2 game
 *Super Robot Taisen: Original Generation Gaiden* (スーパーロボット大戦OG ジ・インスペクター 外伝 —
@@ -8,10 +8,12 @@ JP retail, serial **SLPS-25836**). As far as we can determine (June 2026), no ot
 English translation of this title exists, so this may be the first. (If you find another, great —
 please let us know.)
 
-> ## 0.2 — defect-fix release
-> 0.2 is a fixes pass over the 0.1 playtest: the chapter-intro splash screens are now in English, the
-> menu/UI spacing was corrected, and a long list of status-screen and battle-overlay glitches from 0.1
-> were fixed (see `CHANGELOG.md`). The whole game is translated and playable end to end.
+> ## 0.2.1 — playtest-polish release
+> 0.2.1 is a small fixes pass on top of 0.2: the chapter splash titles are redrawn crisp flat-white, the
+> battle command-menu labels now fit their buttons, and the in-battle Objective screen now uses the full
+> panel width (it previously wrapped to about a third of the row). 0.2 itself put the chapter-intro
+> splashes into English, corrected the menu/UI spacing, and fixed a long list of status-screen and
+> battle-overlay glitches from 0.1 (see `CHANGELOG.md`). The whole game is translated and playable end to end.
 >
 > It's still a young release with a few **known cosmetic rough edges** (see *Known issues* below), and
 > there are surely more we haven't caught. **Please report anything you find** →
@@ -59,10 +61,10 @@ source). Re-dump from your own disc with a tool like ImgBurn or a redump-style d
 
 | | |
 |---|---|
-| File | `SRW_OG_Gaiden_EN_v0_2.xdelta` |
-| Size | 3,690,448 bytes |
-| MD5 | `0446880b10bcf5cb8db37f2e2403a74e` |
-| SHA1 | `de737abf8ef34a22c6b4b52486d8517391e6312d` |
+| File | `SRW_OG_Gaiden_EN_v0_2_1.xdelta` |
+| Size | 3,688,467 bytes |
+| MD5 | `5b332ab75e7e0f63b424e5c8d76f6e41` |
+| SHA1 | `ca6ea89b2bc95cb5b0547ffd43381077ffeefff6` |
 
 ---
 
@@ -73,13 +75,13 @@ You need **xdelta3** (or a GUI front-end for it).
 ### Easiest — GUI (Windows): Delta Patcher
 1. Download **Delta Patcher** (by Phoenix / "DeltaPatcher").
 2. *Original file* → your JP `SLPS-25836` ISO.
-3. *XDelta patch* → `SRW_OG_Gaiden_EN_v0_2.xdelta`.
+3. *XDelta patch* → `SRW_OG_Gaiden_EN_v0_2_1.xdelta`.
 4. Click **Apply patch**. It writes a new patched ISO next to the original.
 
 ### Command line (Windows / macOS / Linux)
 ```bash
 # from a folder containing both the patch and your JP ISO
-xdelta3 -d -s "SLPS-25836 (your JP dump).iso" SRW_OG_Gaiden_EN_v0_2.xdelta "OG_Gaiden_EN_v0_2.iso"
+xdelta3 -d -s "SLPS-25836 (your JP dump).iso" SRW_OG_Gaiden_EN_v0_2_1.xdelta "OG_Gaiden_EN_v0_2_1.iso"
 ```
 - `-d` = decode/apply, `-s` = source (the original JP ISO).
 - Install xdelta3: Windows → download the xdelta3 binary; macOS → `brew install xdelta`;
@@ -91,8 +93,8 @@ The patched ISO should match:
 | | |
 |---|---|
 | Size | 4,666,294,272 bytes |
-| MD5 | `5451d7dd4b6ec9eb00fd8b7d89f07acc` |
-| SHA1 | `702b066a9b6a0fc97e1ae92824432542f8cc9826` |
+| MD5 | `8e11a4dd968518e6d62d173e72b0831f` |
+| SHA1 | `0b3ab9180c6c72439ca555d7b44155fd761b32ac` |
 
 If it matches, the patch applied perfectly.
 
@@ -112,11 +114,10 @@ If it matches, the patch applied perfectly.
 
 These are minor and cosmetic — normal story + battle play is fully English. Targeted for the next patch:
 
-- **Chapter-1 splash** edges look a little rough/banded (a render-quality artifact on the low-colour
-  early title cards; a simpler flat render is planned).
-- **Objective screen:** long objective lines wrap early, and the "Objective" / chapter-title header is
-  slightly cramped.
-- **Battle (map) menu:** the menu items and the Turn / Funds / Skill-Points readout sit slightly off.
+- **Battle (map) menu layout:** the menu items and the Turn / Funds / Skill-Points readout still sit
+  slightly off (the labels themselves now fit; the panel needs full OG1 layout parity).
+- **Objective screen header:** the "Objective" / chapter-title header is still a little cramped (the
+  objective *body* now uses the full panel width as of 0.2.1).
 - A small **footer button-hint label** (the △ "Details" hint on the unit-status/list screens) shows a
   few garbled pixels.
 - A handful of deep-menu and developer/debug strings may remain Japanese.
