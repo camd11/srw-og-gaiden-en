@@ -1,6 +1,6 @@
 # Super Robot Taisen: Original Generation Gaiden — English Translation Patch
 
-**Version:** 0.2.1 · **Platform:** PlayStation 2 · **Patch format:** xdelta3
+**Version:** 0.2.2 · **Platform:** PlayStation 2 · **Patch format:** xdelta3
 
 This is a fan-made **English translation** of the PlayStation 2 game
 *Super Robot Taisen: Original Generation Gaiden* (スーパーロボット大戦OG ジ・インスペクター 外伝 —
@@ -8,12 +8,19 @@ JP retail, serial **SLPS-25836**). As far as we can determine (June 2026), no ot
 English translation of this title exists, so this may be the first. (If you find another, great —
 please let us know.)
 
-> ## 0.2.1 — playtest-polish release
-> 0.2.1 is a small fixes pass on top of 0.2: the chapter splash titles are redrawn crisp flat-white, the
-> battle command-menu labels now fit their buttons, and the in-battle Objective screen now uses the full
-> panel width (it previously wrapped to about a third of the row). 0.2 itself put the chapter-intro
-> splashes into English, corrected the menu/UI spacing, and fixed a long list of status-screen and
-> battle-overlay glitches from 0.1 (see `CHANGELOG.md`). The whole game is translated and playable end to end.
+> ## 0.2.2 — command-menu centering
+> 0.2.2 centers the in-battle command menu (End Turn / Search / Units / …) in its panel — it had been
+> drawn with the proportional font but still *positioned* for the old fixed-width font, so the labels
+> clipped the panel's left edge. 0.2.1 redrew the chapter splash titles crisp flat-white, fit the battle
+> command-menu labels to their buttons, and made the in-battle Objective screen use the full panel width
+> (it previously wrapped to about a third of the row). 0.2 put the chapter-intro splashes into English,
+> corrected the menu/UI spacing, and fixed a long list of status-screen and battle-overlay glitches from
+> 0.1 (see `CHANGELOG.md`). The whole game is translated and playable end to end.
+>
+> **Continuing an older save?** The Objective-screen fix applies to objectives loaded fresh from the disc
+> (a New Game, or simply reaching the next stage). Text already baked into a mid-stage *suspend save* made
+> on an older build keeps the old wrapping until you advance a stage — that's a property of the save, not
+> the patch.
 >
 > It's still a young release with a few **known cosmetic rough edges** (see *Known issues* below), and
 > there are surely more we haven't caught. **Please report anything you find** →
@@ -61,10 +68,10 @@ source). Re-dump from your own disc with a tool like ImgBurn or a redump-style d
 
 | | |
 |---|---|
-| File | `SRW_OG_Gaiden_EN_v0_2_1.xdelta` |
-| Size | 3,688,467 bytes |
-| MD5 | `5b332ab75e7e0f63b424e5c8d76f6e41` |
-| SHA1 | `ca6ea89b2bc95cb5b0547ffd43381077ffeefff6` |
+| File | `SRW_OG_Gaiden_EN_v0_2_2.xdelta` |
+| Size | 3,688,581 bytes |
+| MD5 | `fedb80a140843816fad408bd0bb4d597` |
+| SHA1 | `3e2da4bc4c95f4f3938b556dae82d7459f72068a` |
 
 ---
 
@@ -75,13 +82,13 @@ You need **xdelta3** (or a GUI front-end for it).
 ### Easiest — GUI (Windows): Delta Patcher
 1. Download **Delta Patcher** (by Phoenix / "DeltaPatcher").
 2. *Original file* → your JP `SLPS-25836` ISO.
-3. *XDelta patch* → `SRW_OG_Gaiden_EN_v0_2_1.xdelta`.
+3. *XDelta patch* → `SRW_OG_Gaiden_EN_v0_2_2.xdelta`.
 4. Click **Apply patch**. It writes a new patched ISO next to the original.
 
 ### Command line (Windows / macOS / Linux)
 ```bash
 # from a folder containing both the patch and your JP ISO
-xdelta3 -d -s "SLPS-25836 (your JP dump).iso" SRW_OG_Gaiden_EN_v0_2_1.xdelta "OG_Gaiden_EN_v0_2_1.iso"
+xdelta3 -d -s "SLPS-25836 (your JP dump).iso" SRW_OG_Gaiden_EN_v0_2_2.xdelta "OG_Gaiden_EN_v0_2_2.iso"
 ```
 - `-d` = decode/apply, `-s` = source (the original JP ISO).
 - Install xdelta3: Windows → download the xdelta3 binary; macOS → `brew install xdelta`;
@@ -93,8 +100,8 @@ The patched ISO should match:
 | | |
 |---|---|
 | Size | 4,666,294,272 bytes |
-| MD5 | `8e11a4dd968518e6d62d173e72b0831f` |
-| SHA1 | `0b3ab9180c6c72439ca555d7b44155fd761b32ac` |
+| MD5 | `e793e6dd6a322aad290c9b44d3befe73` |
+| SHA1 | `be439850bf92f38f7f4bded7ba57530aff0181cd` |
 
 If it matches, the patch applied perfectly.
 
@@ -104,7 +111,7 @@ If it matches, the patch applied perfectly.
 
 - **Emulator (PCSX2):** load the patched ISO. The translation was developed and verified on PCSX2.
   No special settings are required for the text to display in English (it renders straight from the
-  disc). The game's CRC after patching is `4EDB8F5B`.
+  disc). The game's boot-ELF CRC after patching is `6C5A18B3`.
 - **Real hardware:** the patched ISO can be burned / loaded via the usual PS2 backup methods. This is
   a same-size, in-place patch, so it behaves like the original disc on real hardware.
 
@@ -114,10 +121,10 @@ If it matches, the patch applied perfectly.
 
 These are minor and cosmetic — normal story + battle play is fully English. Targeted for the next patch:
 
-- **Battle (map) menu layout:** the menu items and the Turn / Funds / Skill-Points readout still sit
-  slightly off (the labels themselves now fit; the panel needs full OG1 layout parity).
+- **Battle (map) menu:** the command items are now centered (0.2.2); the Turn / Funds / Skill-Points
+  readout below them is left-aligned and could use a little more layout polish.
 - **Objective screen header:** the "Objective" / chapter-title header is still a little cramped (the
-  objective *body* now uses the full panel width as of 0.2.1).
+  objective *body* uses the full panel width as of 0.2.1).
 - A small **footer button-hint label** (the △ "Details" hint on the unit-status/list screens) shows a
   few garbled pixels.
 - A handful of deep-menu and developer/debug strings may remain Japanese.

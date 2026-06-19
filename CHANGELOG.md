@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.2.2 (June 2026) — command-menu centering
+
+A small fix on top of 0.2.1. Patch: `SRW_OG_Gaiden_EN_v0_2_2.xdelta` (see `CHECKSUMS.txt`;
+round-trip verified). The boot-ELF CRC changes `4EDB8F5B` → `6C5A18B3`.
+
+- **In-battle command menu now centered.** The map command list (End Turn / Search / Units /
+  Objective / Records / System / Save) was drawn with the variable-width font (since 0.2) but still
+  *positioned* with the old fixed-width (monospace) centering, so every label sat too far left and
+  clipped the panel's left border. Each item is now re-centered for its true variable-width pixel
+  width. (ELF-only change; the game data is unchanged.)
+- **Note on the 0.2.1 Objective fix:** it applies to objectives loaded fresh from the disc — a New
+  Game, or reaching the next stage. Objective text already baked into a mid-stage *suspend save* made
+  on an older build keeps the old wrapping until you advance a stage / start a New Game. That's a
+  property of the save file, not the patch (a fresh New Game shows the full-width objective).
+
 ## 0.2.1 (June 2026) — post-0.2 playtest polish
 
 A small fixes pass on top of 0.2. Patch: `SRW_OG_Gaiden_EN_v0_2_1.xdelta` (see `CHECKSUMS.txt`;
