@@ -1,26 +1,28 @@
-# SRW:OG Gaiden EN — 0.2.4 (Spirit-menu crash fix + terrain glyphs, June 2026)
-# Cumulative: 0.2.4 = 0.2.3 (Spirit fix) + the per-unit terrain glyph fix. Supersedes 0.2.2.
+# SRW:OG Gaiden EN — 0.2.5 (Spirit-menu legend + terrain tile names in English + boot-slide version, June 2026)
+# Cumulative: 0.2.5 = 0.2.4 (Spirit crash fix + per-unit terrain glyphs) + the Spirit-panel kanji legend
+# localized to English + terrain tile NAMES localized to English + boot/credits slide version bump.
+# Supersedes 0.2.4. The boot ELF is unchanged from 0.2.4, so the PCSX2 game CRC stays 6C5AA761.
 
 ## Source (JP retail dump, SLPS-25836) — required base for the patch
 size  4666294272
 md5   cb7dc4485f46f220c46095c966a3aad0
 sha1  2891231bc85603d420c35cda55285d5ecb781f1b
 
-## Result ISO (after applying the 0.2.4 patch)
+## Result ISO (after applying the 0.2.5 patch)
 size  4666294272
-md5   4400d9db16c5ff1ec8794ede8961c36b
-sha1  f7163eafdb97f552ac861fd203c8c655cbf9ce24
+md5   c0e0efcdd9961c158f399b711f9b06f0
+sha1  a97991b46bfb94a8b34c54514a94995a903abda4
 game CRC (PCSX2)  6C5AA761
 
 ## Patch
-file  SRW_OG_Gaiden_EN_v0_2_4.xdelta
-size  3688458
-md5   6b1dfab707ddb66e47816fc87ccfec2e
-sha1  092f9db9d8c15439f6fd7b478de0b1692ee71de1
+file  SRW_OG_Gaiden_EN_v0_2_5.xdelta
+size  3691754
+md5   966f0346655986fc5f87b2e153c0e0f3
+sha1  21d9ad3dcedc89145024e2ada51e3b61583143a2
 
 ## Apply
-xdelta3 -d -s "Super Robot Taisen - Original Generation Gaiden [J].iso" SRW_OG_Gaiden_EN_v0_2_4.xdelta out.iso
+xdelta3 -d -s "Super Robot Taisen - Original Generation Gaiden [J].iso" SRW_OG_Gaiden_EN_v0_2_5.xdelta OG_Gaiden_EN_v0_2_5.iso
 
 ## Round-trip
 Verified: applying the patch to the JP base above reproduces the result ISO byte-for-byte
-(decoded md5 == 4400d9db16c5ff1ec8794ede8961c36b).
+(decoded md5 == c0e0efcdd9961c158f399b711f9b06f0).

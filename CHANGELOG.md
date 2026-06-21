@@ -1,5 +1,25 @@
 # Changelog
 
+## 0.2.5 (June 2026) — Spirit-menu legend + terrain tile names in English (cumulative)
+
+Cumulative on top of 0.2.4. Patch: `SRW_OG_Gaiden_EN_v0_2_5.xdelta` (see `CHECKSUMS.txt`;
+round-trip verified). The boot ELF is unchanged from 0.2.4, so the PCSX2 game CRC stays `6C5AA761`;
+only `/OL/W1OL.BIN`, `GRAPHIC.BIN`, and `/DATA/MAP.BIN` differ.
+
+- **The Spirit-menu bottom legend is now English.** The reference strip along the bottom of the Spirit
+  (精神) panel was a row of 21 single Japanese kanji (熱閃不鉄集必加覚…); it now reads the English spirit
+  abbreviations (`VaFlGuIrFoStAcAwMcSnSeLuGaAsRpFsDsSoCoSyDrv`). On-screen verified on a fresh New Game —
+  the menu animates (no crash) and the unit Status screen stays fully English.
+- **Terrain tile names are now English.** The unit-detail overlay header (above Def%/Eva%/HP Regen%/
+  EN Regen%) showed the Japanese terrain name — 荒野 "wasteland", 平地 "flatland", 宇宙空間 "space",
+  道路 "road", 軍事基地 "military base", … These are a global terrain table in `MAP.BIN`; all 148 unique
+  names are now concise English (SRW terminology, abbreviated to fit the box). In-place data change — no
+  code or pointers touched. On-screen verified: a 荒野 tile now reads **"Wastes"**.
+- **Boot/credits slide version** bumped to read "Release Version 0.2.5".
+- Known minor cosmetic: the last two legend entries (Sy / Drv) slightly overlap the R3 button-hint icon;
+  the Spirit panel's `自/単` (Auto/Single) mode line stays Japanese; a few long terrain names are
+  abbreviated to fit the on-screen box.
+
 ## 0.2.4 (June 2026) — terrain glyphs (cumulative)
 
 Cumulative on top of 0.2.3. Patch: `SRW_OG_Gaiden_EN_v0_2_4.xdelta` (see `CHECKSUMS.txt`;

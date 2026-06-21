@@ -1,6 +1,6 @@
 # Super Robot Taisen: Original Generation Gaiden — English Translation Patch
 
-**Version:** 0.2.4 · **Platform:** PlayStation 2 · **Patch format:** xdelta3
+**Version:** 0.2.5 · **Platform:** PlayStation 2 · **Patch format:** xdelta3
 
 This is a fan-made **English translation** of the PlayStation 2 game
 *Super Robot Taisen: Original Generation Gaiden* (スーパーロボット大戦OG ジ・インスペクター 外伝 —
@@ -8,15 +8,16 @@ JP retail, serial **SLPS-25836**). As far as we can determine (June 2026), no ot
 English translation of this title exists, so this may be the first. (If you find another, great —
 please let us know.)
 
-> ## 0.2.4 — Spirit-menu crash fix + terrain glyphs (cumulative)
-> **0.2.4 fixes the Spirit (精神) menu crash** — in earlier English builds, choosing *Spirit* on a unit's
-> command menu opened a blank panel and froze the game; that's now fixed (corrupted pointer-table entries
-> in one overlay file), with all menu/status text staying English. **It also fixes the per-unit terrain
-> glyphs** (air/land/water), which were showing as garbled Japanese kanji in the Ally Unit List's
-> Air/Lan/Sea column — now **Ai/La/Se**, matching the Status screen. 0.2.4 carries forward everything from
-> 0.2.x: chapter-intro splash screens in English, corrected menu/UI spacing, the centered command menu,
-> the full-width objective screen, and the long list of status-screen and battle-overlay fixes. The whole
-> game is translated and playable end to end.
+> ## 0.2.5 — Spirit-menu legend + terrain tile names in English (cumulative)
+> **0.2.5 localizes the last two visible pieces of in-game Japanese text.** The **Spirit (精神) panel's
+> bottom reference legend** — a row of 21 single Japanese kanji — now reads the English spirit
+> abbreviations (`VaFlGu…SyDrv`). And the **terrain tile names** in the unit-detail overlay are now English
+> (荒野 → "Wastes", 平地 → "Flatland", 宇宙空間 → "Space", … 148 terrain types). The boot/credits slide also
+> shows the correct version. It builds on **0.2.4** (per-unit air/land/water terrain glyphs now **Ai/La/Se**)
+> and **0.2.3** (the Spirit-menu crash fix — choosing *Spirit* used to freeze the game), and carries
+> forward everything from 0.2.x: chapter-intro splash screens in English, corrected menu/UI spacing, the
+> centered command menu, the full-width objective screen, and the long list of status-screen and
+> battle-overlay fixes. The whole game is translated and playable end to end.
 >
 > It's still a young release with a few **known cosmetic rough edges** (see *Known issues* below), and
 > there are surely more we haven't caught. **Please report anything you find** →
@@ -64,10 +65,10 @@ source). Re-dump from your own disc with a tool like ImgBurn or a redump-style d
 
 | | |
 |---|---|
-| File | `SRW_OG_Gaiden_EN_v0_2_4.xdelta` |
-| Size | 3,688,458 bytes |
-| MD5 | `6b1dfab707ddb66e47816fc87ccfec2e` |
-| SHA1 | `092f9db9d8c15439f6fd7b478de0b1692ee71de1` |
+| File | `SRW_OG_Gaiden_EN_v0_2_5.xdelta` |
+| Size | 3,691,754 bytes |
+| MD5 | `966f0346655986fc5f87b2e153c0e0f3` |
+| SHA1 | `21d9ad3dcedc89145024e2ada51e3b61583143a2` |
 
 ---
 
@@ -78,13 +79,13 @@ You need **xdelta3** (or a GUI front-end for it).
 ### Easiest — GUI (Windows): Delta Patcher
 1. Download **Delta Patcher** (by Phoenix / "DeltaPatcher").
 2. *Original file* → your JP `SLPS-25836` ISO.
-3. *XDelta patch* → `SRW_OG_Gaiden_EN_v0_2_4.xdelta`.
+3. *XDelta patch* → `SRW_OG_Gaiden_EN_v0_2_5.xdelta`.
 4. Click **Apply patch**. It writes a new patched ISO next to the original.
 
 ### Command line (Windows / macOS / Linux)
 ```bash
 # from a folder containing both the patch and your JP ISO
-xdelta3 -d -s "SLPS-25836 (your JP dump).iso" SRW_OG_Gaiden_EN_v0_2_4.xdelta "OG_Gaiden_EN_v0_2_4.iso"
+xdelta3 -d -s "SLPS-25836 (your JP dump).iso" SRW_OG_Gaiden_EN_v0_2_5.xdelta "OG_Gaiden_EN_v0_2_5.iso"
 ```
 - `-d` = decode/apply, `-s` = source (the original JP ISO).
 - Install xdelta3: Windows → download the xdelta3 binary; macOS → `brew install xdelta`;
@@ -96,8 +97,8 @@ The patched ISO should match:
 | | |
 |---|---|
 | Size | 4,666,294,272 bytes |
-| MD5 | `4400d9db16c5ff1ec8794ede8961c36b` |
-| SHA1 | `f7163eafdb97f552ac861fd203c8c655cbf9ce24` |
+| MD5 | `c0e0efcdd9961c158f399b711f9b06f0` |
+| SHA1 | `a97991b46bfb94a8b34c54514a94995a903abda4` |
 
 If it matches, the patch applied perfectly.
 
@@ -119,12 +120,14 @@ These are minor and cosmetic — normal story + battle play is fully English. Ta
 
 - A small **footer button-hint label** (the △ "Details" hint on the unit-status/list screens) shows a
   few garbled pixels — it's a pre-rendered button-hint graphic, not text.
-- A handful of deep-menu and developer/debug strings may remain Japanese.
+- A two-character mode toggle (自/単) on the Spirit panel, and a handful of deep-menu / developer
+  strings, may remain Japanese.
 - If you import a **save file made on the original Japanese game** (or a suspend save from an older
   patch build) mid-battle, some objective text baked into that save can show Japanese. Start a
   **New Game** on the patched ISO for the fully-English experience.
 
-Fixed since 0.2: the per-unit terrain glyphs now read Ai/La/Se (0.2.4), the Spirit-menu crash (0.2.3),
+Fixed since 0.2: the Spirit-panel bottom legend now reads English and the terrain tile names are now
+English (0.2.5), the per-unit terrain glyphs now read Ai/La/Se (0.2.4), the Spirit-menu crash (0.2.3),
 the command-menu centering (0.2.2), the full-width objective screen (0.2.1), the splash-title rendering
 (0.2.1), and the battle command-menu label fit (0.2.1). See `CHANGELOG.md`.
 
