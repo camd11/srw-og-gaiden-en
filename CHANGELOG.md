@@ -1,5 +1,28 @@
 # Changelog
 
+## 0.2.4 (June 2026) — terrain glyphs (cumulative)
+
+Cumulative on top of 0.2.3. Patch: `SRW_OG_Gaiden_EN_v0_2_4.xdelta` (see `CHECKSUMS.txt`;
+round-trip verified). The boot-ELF CRC changes `6C5A18B3` → `6C5AA761`.
+
+- **Per-unit terrain glyphs are now English.** A unit's air / land / water terrain compatibility was
+  rendered as raw Japanese kanji (空 / 陸 / 水) that the English font turned into garbage — most visible
+  in the **Ally Unit List** ("Movement / Type" page), whose terrain column showed a garbled glyph for
+  each unit. The column now reads **Ai / La / Se**, matching the unit Status screen's existing terrain
+  convention. (In-place text change; no game code touched.)
+
+## 0.2.3 (June 2026) — Spirit-menu crash fix
+
+A stability fix on top of 0.2.2. Patch: `SRW_OG_Gaiden_EN_v0_2_3.xdelta` (see `CHECKSUMS.txt`;
+round-trip verified). Game data only; the boot-ELF CRC is unchanged (`6C5A18B3`).
+
+- **The Spirit (精神) command no longer crashes the game.** In every previous English build, choosing
+  *Spirit* on a unit's command menu opened a blank panel and froze the game (it worked on the
+  unmodified Japanese disc). The translation tool's in-place text edits had corrupted a handful of
+  pointer-table entries in one overlay file; the Spirit handler followed a broken pointer and hung.
+  Those pointer slots are now restored to their original values while keeping every English label, so
+  the Spirit menu works **and** all status/command text stays English. Verified on a fresh New Game.
+
 ## 0.2.2 (June 2026) — command-menu centering
 
 A small fix on top of 0.2.1. Patch: `SRW_OG_Gaiden_EN_v0_2_2.xdelta` (see `CHECKSUMS.txt`;
