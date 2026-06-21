@@ -1,28 +1,29 @@
-# SRW:OG Gaiden EN — 0.2.5 (Spirit-menu legend + terrain tile names in English + boot-slide version, June 2026)
-# Cumulative: 0.2.5 = 0.2.4 (Spirit crash fix + per-unit terrain glyphs) + the Spirit-panel kanji legend
-# localized to English + terrain tile NAMES localized to English + boot/credits slide version bump.
-# Supersedes 0.2.4. The boot ELF is unchanged from 0.2.4, so the PCSX2 game CRC stays 6C5AA761.
+# SRW:OG Gaiden EN — 0.2.6 (Spirit target-mode line + status-label overlap fixes, June 2026)
+# Cumulative: 0.2.6 = 0.2.5 (Spirit-menu legend + terrain tile names in English + boot slide) +
+# the Spirit panel target-mode line localized to English (−自／単 → −Slf／Sgl−) + over-wide
+# status-overlay labels shortened so values no longer overlap them.
+# Supersedes 0.2.5. The boot ELF is unchanged, so the PCSX2 game CRC stays 6C5AA761.
 
 ## Source (JP retail dump, SLPS-25836) — required base for the patch
 size  4666294272
 md5   cb7dc4485f46f220c46095c966a3aad0
 sha1  2891231bc85603d420c35cda55285d5ecb781f1b
 
-## Result ISO (after applying the 0.2.5 patch)
+## Result ISO (after applying the 0.2.6 patch)
 size  4666294272
-md5   c0e0efcdd9961c158f399b711f9b06f0
-sha1  a97991b46bfb94a8b34c54514a94995a903abda4
+md5   4abedac1ffb874145a174e142fd76934
+sha1  3c4f3fcd9a071ad56728468aa89908e7bdf004cf
 game CRC (PCSX2)  6C5AA761
 
 ## Patch
-file  SRW_OG_Gaiden_EN_v0_2_5.xdelta
-size  3691754
-md5   966f0346655986fc5f87b2e153c0e0f3
-sha1  21d9ad3dcedc89145024e2ada51e3b61583143a2
+file  SRW_OG_Gaiden_EN_v0_2_6.xdelta
+size  3691781
+md5   9fe72100b69c707e44bd39ee69ad466c
+sha1  cea04a33a23a7c71e30b81fd27afa0651730518b
 
 ## Apply
-xdelta3 -d -s "Super Robot Taisen - Original Generation Gaiden [J].iso" SRW_OG_Gaiden_EN_v0_2_5.xdelta OG_Gaiden_EN_v0_2_5.iso
+xdelta3 -d -s "Super Robot Taisen - Original Generation Gaiden [J].iso" SRW_OG_Gaiden_EN_v0_2_6.xdelta OG_Gaiden_EN_v0_2_6.iso
 
 ## Round-trip
 Verified: applying the patch to the JP base above reproduces the result ISO byte-for-byte
-(decoded md5 == c0e0efcdd9961c158f399b711f9b06f0).
+(decoded md5 == 4abedac1ffb874145a174e142fd76934).

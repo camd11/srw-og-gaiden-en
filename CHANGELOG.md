@@ -1,5 +1,26 @@
 # Changelog
 
+## 0.2.6 (June 2026) — Spirit target-mode line + status-label fit (cumulative)
+
+Cumulative on top of 0.2.5. Patch: `SRW_OG_Gaiden_EN_v0_2_6.xdelta` (see `CHECKSUMS.txt`;
+round-trip verified). The boot ELF is unchanged, so the PCSX2 game CRC stays `6C5AA761`; only
+`/OL/MPOL.BIN` and `/OL/W1OL.BIN` differ from 0.2.5.
+
+- **The Spirit target-mode line is now English.** Under each spirit's effect, the panel showed the
+  spell's target scope as Japanese kanji — `−自／単`. It now reads `−Slf／Sgl−` (the full set:
+  Slf = self, Sgl = single, All, Aly = ally, Foe, Sqd = squad, Ptr = partner). Root: the target-type
+  strings live in an 8-byte-stride table in `/OL/MPOL.BIN`; the line's renderer advances per full-width
+  glyph, so they were re-encoded as full-width Latin abbreviations (pure data edit — no code change, so
+  the Spirit-menu crash fix is untouched). On-screen verified on a fresh New Game: the Focus spirit now
+  shows `-Slf / Sgl-`, the menu animates, and the Status screen stays English.
+- **Over-wide status labels no longer overlap their values.** In the unit-detail overlay the English
+  labels were wider than the Japanese originals, so the numbers collided into them ("Support At**1**a**1**k").
+  Shortened in place: "Support Attack" → "Sup Atk", "Support Defend" → "Sup Def", "Unit Movement" →
+  "Movement".
+- Known minor cosmetic (unchanged): the L1/R1/L2/R2 + △ footer button-hint labels and the per-unit
+  movement-rank glyphs render as garbled pixels (small UI sprite-font with no Latin glyphs — needs art,
+  not a text fix); the last two Spirit-legend entries (Sy / Drv) slightly graze the R3 hint.
+
 ## 0.2.5 (June 2026) — Spirit-menu legend + terrain tile names in English (cumulative)
 
 Cumulative on top of 0.2.4. Patch: `SRW_OG_Gaiden_EN_v0_2_5.xdelta` (see `CHECKSUMS.txt`;
