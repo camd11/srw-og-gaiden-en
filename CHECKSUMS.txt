@@ -1,29 +1,32 @@
-# SRW:OG Gaiden EN — 0.2.6 (Spirit target-mode line + status-label overlap fixes, June 2026)
-# Cumulative: 0.2.6 = 0.2.5 (Spirit-menu legend + terrain tile names in English + boot slide) +
-# the Spirit panel target-mode line localized to English (−自／単 → −Slf／Sgl−) + over-wide
-# status-overlay labels shortened so values no longer overlap them.
-# Supersedes 0.2.5. The boot ELF is unchanged, so the PCSX2 game CRC stays 6C5AA761.
+# SRW:OG Gaiden EN — 0.2.7 (Ally Unit List placeholder fix, June 2026)
+# Cumulative: 0.2.7 = 0.2.6 (Spirit target-mode line + status-label overlap fixes) +
+# the Ally Unit List pilot-name sub-line for unnamed MP units fixed: it rendered as "\\\\\"
+# (5 backslashes) because the placeholder was 5x full-width-minus (SJIS 81 7C), which the
+# OG1-EN ASCII-ordered font maps to '\'. All 11 such full-width-minus runs in the boot ELF's
+# UI string table were converted in-place (same byte length) to ASCII '-' -> clean "-----".
+# Supersedes 0.2.6. NOTE: this edits the boot ELF, so the PCSX2 game CRC CHANGES
+# 6C5AA761 -> 6C5AF6E0 (0.2.6 save states will not load on 0.2.7).
 
 ## Source (JP retail dump, SLPS-25836) — required base for the patch
 size  4666294272
 md5   cb7dc4485f46f220c46095c966a3aad0
 sha1  2891231bc85603d420c35cda55285d5ecb781f1b
 
-## Result ISO (after applying the 0.2.6 patch)
+## Result ISO (after applying the 0.2.7 patch)
 size  4666294272
-md5   4abedac1ffb874145a174e142fd76934
-sha1  3c4f3fcd9a071ad56728468aa89908e7bdf004cf
-game CRC (PCSX2)  6C5AA761
+md5   ffeb49c99405896d2201bd339b5ca941
+sha1  a13d1f9dabc583a11f2bd0720fd9a0af926745e4
+game CRC (PCSX2)  6C5AF6E0
 
 ## Patch
-file  SRW_OG_Gaiden_EN_v0_2_6.xdelta
-size  3691781
-md5   9fe72100b69c707e44bd39ee69ad466c
-sha1  cea04a33a23a7c71e30b81fd27afa0651730518b
+file  SRW_OG_Gaiden_EN_v0_2_7.xdelta
+size  3691830
+md5   53d4d43a80f3433a3a51e2521f64d79a
+sha1  11c99fb0fc8ea2e885f84ffb8dc370bc945e58a3
 
 ## Apply
-xdelta3 -d -s "Super Robot Taisen - Original Generation Gaiden [J].iso" SRW_OG_Gaiden_EN_v0_2_6.xdelta OG_Gaiden_EN_v0_2_6.iso
+xdelta3 -d -s "Super Robot Taisen - Original Generation Gaiden [J].iso" SRW_OG_Gaiden_EN_v0_2_7.xdelta OG_Gaiden_EN_v0_2_7.iso
 
 ## Round-trip
 Verified: applying the patch to the JP base above reproduces the result ISO byte-for-byte
-(decoded md5 == 4abedac1ffb874145a174e142fd76934).
+(decoded md5 == ffeb49c99405896d2201bd339b5ca941).

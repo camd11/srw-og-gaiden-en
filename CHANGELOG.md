@@ -1,5 +1,24 @@
 # Changelog
 
+## 0.2.7 (June 2026) — Ally Unit List placeholder fix (cumulative)
+
+Cumulative on top of 0.2.6. Patch: `SRW_OG_Gaiden_EN_v0_2_7.xdelta` (see `CHECKSUMS.txt`;
+round-trip verified). **Note:** unlike 0.2.4–0.2.6, this release edits the boot ELF, so the
+PCSX2 game CRC changes from `6C5AA761` to `6C5AF6E0` — save states made on 0.2.6 will not load
+on 0.2.7.
+
+- **The Ally Unit List no longer shows `\\\\\` under each unit.** For unnamed mass-produced units
+  (e.g. the prologue's "MP Gespenst Mk-II"), the sub-pilot line was a placeholder of five full-width
+  minus signs (`−−−−−`). Because the English font is ASCII-ordered, the full-width minus mapped to the
+  backslash cell, so it rendered as `\\\\\`. The placeholder (and the other ten full-width-minus runs
+  in the boot ELF's UI string table) were converted in place to ASCII dashes, so it now reads `-----`,
+  matching the game's own empty-slot style (e.g. "2  -----"). On-screen verified on a fresh New Game.
+- Known minor cosmetic (unchanged): the L1/R1/L2/R2 + ◎/△ button-hint labels still render as garbled
+  pixels — confirmed this release to be a small UI sprite-font with no Latin glyphs (the in-ROM text
+  tables for these labels are dead copies; the live source is sprite/overlay-internal — needs art, not
+  a text edit). The unit-list Movement/Type column's single `\` separators and the compact-status
+  `Type Land` tail are the same full-width-minus family and remain on the to-do list.
+
 ## 0.2.6 (June 2026) — Spirit target-mode line + status-label fit (cumulative)
 
 Cumulative on top of 0.2.5. Patch: `SRW_OG_Gaiden_EN_v0_2_6.xdelta` (see `CHECKSUMS.txt`;
