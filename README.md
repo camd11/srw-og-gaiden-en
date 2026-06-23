@@ -32,6 +32,24 @@ please let us know.)
 
 ---
 
+## Screenshots
+
+All captured from the final patched ISO on a fresh New Game — no texture pack, everything is baked into
+the patch.
+
+| | |
+|---|---|
+| **Title screen** | **Story dialogue** |
+| ![Title](screenshots/01_title.png) | ![Dialogue](screenshots/02_dialogue.png) |
+| **In-battle combat animation** | **Tactical map** |
+| ![Combat](screenshots/04_battle_combat.png) | ![Map](screenshots/03_map_movement.png) |
+| **Ally Unit List** (sub-line `-----`, new in 0.2.7) | **Unit status screen** |
+| ![Unit list](screenshots/11_unitlist_pilot_dashes.png) | ![Status](screenshots/05_status_unit.png) |
+| **Spirit menu** (target line `-Slf / Sgl-`, legend in English) | **English terrain tile name** |
+| ![Spirit](screenshots/10_spirit_modeline_EN.png) | ![Terrain](screenshots/06_terrain_name_wastes.png) |
+
+---
+
 ## What's translated
 
 - **Story / event dialogue** — 100% English, in the OG1-English proportional font (Kingcom style:
@@ -126,9 +144,16 @@ These are minor and cosmetic — normal story + battle play is fully English. Ta
   overlay are similar. Confirmed in 0.2.7: these are drawn through a small UI sprite-font with no Latin
   glyphs (the in-ROM text tables for these labels are dead duplicates; the live source is
   sprite/overlay-internal), so they need font/art work rather than a text edit — planned for a later patch.
-- The unit-list Movement/Type column still shows single `\` separators, and the compact "Active Spirit
-  Commands" status shows a `Type Land` tail with stray pixels — both are the same full-width-minus family
-  as the (now-fixed) unit-list placeholder and are on the to-do list.
+  The button *icons* draw correctly; only the little labels beside them are noise:
+
+  ![Footer hint garble](screenshots/12_remaining_hint_footer.png)
+
+- The unit-list Movement/Type column still shows garbled column headers and single `\` separators, and the
+  compact "Active Spirit Commands" status shows a `Type Land` tail with stray pixels — both are the same
+  full-width-minus family as the (now-fixed) unit-list placeholder and are on the to-do list. (The `La` =
+  Land values themselves are correct.)
+
+  ![Movement/Type garble](screenshots/13_remaining_movement_type.png)
 - The last two Spirit-legend entries (Sy / Drv) slightly graze the R3 button-hint icon.
 - If you import a **save file made on the original Japanese game** (or a suspend save from an older
   patch build) mid-battle, some objective text baked into that save can show Japanese. Start a
