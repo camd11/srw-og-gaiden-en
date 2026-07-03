@@ -1,5 +1,49 @@
 # Changelog
 
+## 0.2.8 (July 2026) — community bug round: hardware crash, blank lists, dialogue re-layout (cumulative)
+
+Cumulative on top of 0.2.7. Patch: `SRW_OG_Gaiden_EN_v0_2_8.xdelta` (see `CHECKSUMS.txt`;
+round-trip verified). **Note:** this release relocates data inside the boot ELF, so the PCSX2
+game CRC changes from `6C5AF6E0` to **`1F76B2D9`** — save states made on 0.2.7 will not load on
+0.2.8. Memory-card saves are unaffected and carry over normally.
+
+This release fixes every bug reported by the community since 0.2.7 (GitHub issues #1, #2, #3,
+#5 and the RHDN thread). Thank you to riohcx, TeddiRiggs, Soulgaijin, and yuval4436 for the
+reports — exact repro details made these fixable.
+
+- **Crash on real hardware (OPL) at the start of Episode 1 — fixed** (GitHub #1). Root cause:
+  all of the patch's added data (the proportional-font width table, menu-rendering helpers, and
+  ~300 added strings) lived in a region of the boot ELF that looked unused but is actually live
+  working memory for the PS2's controller/CD drivers. Emulators masked the collision; real
+  hardware corrupted it on the first controller poll once units became controllable. Every added
+  byte was relocated into verified-dead space (orphaned original-JP string storage). This is the
+  CRC-changing edit. Verified: full boot → prologue → dialogue → menus → Spirit menu on the
+  relocated build. *Real-hardware confirmation from an OPL user would be very welcome on the issue.*
+- **Save/Load slot list was blank — fixed** (GitHub #5 + RHDN). The slot list (titles, episode
+  numbers, "Free" space, dashes) now renders. One caveat: save files *written by 0.2.7 or older*
+  carry a garbled title inside the save data itself; re-saving once on 0.2.8 rewrites it clean.
+- **BGM Select list was blank/unreadable — fixed** (GitHub #2 + RHDN). All 90 track names now
+  display in full-length English (matching Kingcom's OG1 track-name canon), on every page of
+  BGM Select and the per-unit BGM picker.
+- **Dialogue lines cut off at the box edge + backlog double-drawing — fixed** (GitHub #3), via a
+  script-wide dialogue re-layout: speaker names are now **inline** — `Name: dialogue...` — in the
+  style of Kingcom's OG1 patch (and of the original JP game), instead of taking a dedicated first
+  line. That frees a third text row in both the dialogue box and the backlog, and the entire
+  script (≈19,500 lines) was re-wrapped to fit. Result: **no dialogue line anywhere in the game
+  is cut off any more**, and the backlog no longer double-draws line tails. 21 of ~20,000 lines
+  were very lightly condensed to fit (meaning and character voice preserved).
+- **Ally Unit List "Movement/Type" page — fixed** (reported as overlapping fonts on RetroGameTalk).
+  Column headers no longer overlap (now `Total Mv | Mv Type | Ai La Se`) and the `\` cells are
+  proper dashes (`- La -`).
+- Boot slide version line reads 0.2.8.
+
+Known issues that remain (see README *Known issues*): the footer button-hint sprite labels
+(art, not text — GitHub #88-class), rare stale-glyph tails in the backlog on very long lines
+(cosmetic, no worse than 0.2.7), Arado's battle quotes intermittently blank/garbled
+(GitHub #4 — under investigation), and a second copy of the BGM list used by the intermission
+Sound menu, which still has the old blank-row issue (the same fix is prepared but not yet
+verified on that screen).
+
 ## 0.2.7 (June 2026) — Ally Unit List placeholder fix (cumulative)
 
 Cumulative on top of 0.2.6. Patch: `SRW_OG_Gaiden_EN_v0_2_7.xdelta` (see `CHECKSUMS.txt`;

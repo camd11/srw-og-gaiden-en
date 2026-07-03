@@ -1,32 +1,36 @@
-# SRW:OG Gaiden EN — 0.2.7 (Ally Unit List placeholder fix, June 2026)
-# Cumulative: 0.2.7 = 0.2.6 (Spirit target-mode line + status-label overlap fixes) +
-# the Ally Unit List pilot-name sub-line for unnamed MP units fixed: it rendered as "\\\\\"
-# (5 backslashes) because the placeholder was 5x full-width-minus (SJIS 81 7C), which the
-# OG1-EN ASCII-ordered font maps to '\'. All 11 such full-width-minus runs in the boot ELF's
-# UI string table were converted in-place (same byte length) to ASCII '-' -> clean "-----".
-# Supersedes 0.2.6. NOTE: this edits the boot ELF, so the PCSX2 game CRC CHANGES
-# 6C5AA761 -> 6C5AF6E0 (0.2.6 save states will not load on 0.2.7).
+# SRW:OG Gaiden EN — 0.2.8 (OPL hardware crash fix + save/BGM lists + dialogue re-layout, July 2026)
+# Cumulative: 0.2.8 = 0.2.7 (Ally Unit List placeholder fix) +
+# the real-hardware (OPL/PS2) crash fixed: relocated ELF data that our earlier appends had
+# placed inside live pad/CD driver memory (crash only manifested on hardware, not PCSX2);
+# save/load slot list restored (was blank); BGM Select + Unit BGM lists fully readable
+# (the renderer is full-width-only — lists re-encoded accordingly); Ally Unit List
+# Movement/Type page fixed; story dialogue re-laid-out to inline "Name: body" (OG1 style),
+# freeing a third text row — eliminates all reported text clipping and the backlog
+# double-draw; 21 lines lightly condensed to fit; boot slide now reads 0.2.8.
+# Supersedes 0.2.7. NOTE: this edits the boot ELF, so the PCSX2 game CRC CHANGES
+# 6C5AF6E0 -> 1F76B2D9 (0.2.7 save STATES will not load on 0.2.8; memory-card saves
+# are unaffected).
 
 ## Source (JP retail dump, SLPS-25836) — required base for the patch
 size  4666294272
 md5   cb7dc4485f46f220c46095c966a3aad0
 sha1  2891231bc85603d420c35cda55285d5ecb781f1b
 
-## Result ISO (after applying the 0.2.7 patch)
+## Result ISO (after applying the 0.2.8 patch)
 size  4666294272
-md5   ffeb49c99405896d2201bd339b5ca941
-sha1  a13d1f9dabc583a11f2bd0720fd9a0af926745e4
-game CRC (PCSX2)  6C5AF6E0
+md5   171f7fca4d7192bbd066f1d2925c31c9
+sha1  8734d15103bb199f51c3f1b294fd1bbce8355cd7
+game CRC (PCSX2)  1F76B2D9
 
 ## Patch
-file  SRW_OG_Gaiden_EN_v0_2_7.xdelta
-size  3691830
-md5   53d4d43a80f3433a3a51e2521f64d79a
-sha1  11c99fb0fc8ea2e885f84ffb8dc370bc945e58a3
+file  SRW_OG_Gaiden_EN_v0_2_8.xdelta
+size  3791357
+md5   e8e94068706c6b00324e64488218320e
+sha1  84a061e2335ab458970f3ee5e2ece9d601b8ea36
 
 ## Apply
-xdelta3 -d -s "Super Robot Taisen - Original Generation Gaiden [J].iso" SRW_OG_Gaiden_EN_v0_2_7.xdelta OG_Gaiden_EN_v0_2_7.iso
+xdelta3 -d -s "Super Robot Taisen - Original Generation Gaiden [J].iso" SRW_OG_Gaiden_EN_v0_2_8.xdelta OG_Gaiden_EN_v0_2_8.iso
 
 ## Round-trip
 Verified: applying the patch to the JP base above reproduces the result ISO byte-for-byte
-(decoded md5 == ffeb49c99405896d2201bd339b5ca941).
+(decoded md5 == 171f7fca4d7192bbd066f1d2925c31c9).
