@@ -1,36 +1,44 @@
-# SRW:OG Gaiden EN — 0.2.8 (OPL hardware crash fix + save/BGM lists + dialogue re-layout, July 2026)
-# Cumulative: 0.2.8 = 0.2.7 (Ally Unit List placeholder fix) +
-# the real-hardware (OPL/PS2) crash fixed: relocated ELF data that our earlier appends had
-# placed inside live pad/CD driver memory (crash only manifested on hardware, not PCSX2);
-# save/load slot list restored (was blank); BGM Select + Unit BGM lists fully readable
-# (the renderer is full-width-only — lists re-encoded accordingly); Ally Unit List
-# Movement/Type page fixed; story dialogue re-laid-out to inline "Name: body" (OG1 style),
-# freeing a third text row — eliminates all reported text clipping and the backlog
-# double-draw; 21 lines lightly condensed to fit; boot slide now reads 0.2.8.
-# Supersedes 0.2.7. NOTE: this edits the boot ELF, so the PCSX2 game CRC CHANGES
-# 6C5AF6E0 -> 1F76B2D9 (0.2.7 save STATES will not load on 0.2.8; memory-card saves
+# SRW:OG Gaiden EN — 0.2.9 (community bug round: backlog crash fix + banner/renderer fixes, July 2026)
+# Cumulative: 0.2.9 = 0.2.8 + this round's six fixes, all proven on-screen in PCSX2:
+# - Backlog (Triangle) crash + repeated-sentence/sprite corruption fixed (bounded-copy patch in the
+#   dialogue overlay; the crash class reported on Kai/Radha talk and Stage 4 is eliminated globally);
+# - CONTINUE-screen stage banner shows the episode number + title correctly;
+# - Parts (item) menu descriptions restored to full English;
+# - Skill Point award banner re-formatted ("Skill Point acquired. All pilots +5PP.");
+# - Story-recap scroll ("New Era year 188...") re-wrapped so no line runs off-screen;
+# - In-game episode splash cards render cleanly;
+# - VN location-banner suffixes fixed at the renderer (e.g. "Transport - Hangar" no longer garbles;
+#   both banner drawers now treat a lone 0x40 byte as a space instead of desyncing);
+# - Boot slide version line reads 0.2.9.
+# Supersedes 0.2.8. NOTE: this edits the boot ELF, so the PCSX2 game CRC CHANGES
+# 1F76B2D9 -> DF47D8DA (0.2.8 save STATES will not load on 0.2.9; memory-card saves
 # are unaffected).
+# KNOWN ISSUE: the Stage-2 scrolling-intro freeze reported on real PS2 hardware via OPL is NOT
+# claimed fixed here. A separate opt-in hardware-test patch exists
+# (SRW_OG_Gaiden_EN_v0_2_9_OPLtest_nocut.xdelta); see the GitHub issue tracker.
 
 ## Source (JP retail dump, SLPS-25836) — required base for the patch
 size  4666294272
 md5   cb7dc4485f46f220c46095c966a3aad0
 sha1  2891231bc85603d420c35cda55285d5ecb781f1b
 
-## Result ISO (after applying the 0.2.8 patch)
+## Result ISO (after applying the 0.2.9 patch)
 size  4666294272
-md5   171f7fca4d7192bbd066f1d2925c31c9
-sha1  8734d15103bb199f51c3f1b294fd1bbce8355cd7
-game CRC (PCSX2)  1F76B2D9
+md5   de91ab6da80135e932a7c58d8dec8271
+sha1  85a0d82648e126cd3bbccc7de2df96b2baab2f87
+sha256 f27c73b7d8133180d00a3b79f7c986c2b76d008dee7bbe9de3cf237861b42eb8
+game CRC (PCSX2)  DF47D8DA
 
 ## Patch
-file  SRW_OG_Gaiden_EN_v0_2_8.xdelta
-size  3791357
-md5   e8e94068706c6b00324e64488218320e
-sha1  84a061e2335ab458970f3ee5e2ece9d601b8ea36
+file  SRW_OG_Gaiden_EN_v0_2_9.xdelta
+size  4055210
+md5   852a28d09f902e670363c1dbfc08b7ec
+sha1  1847db13049e80f4e4a2cc4192434fda8c9c7e2b
+sha256 8c03afaf168afda3a9cd0ff1771e4add75bd7b6988ae8dd02e4a27e0d5f4b6ac
 
 ## Apply
-xdelta3 -d -s "Super Robot Taisen - Original Generation Gaiden [J].iso" SRW_OG_Gaiden_EN_v0_2_8.xdelta OG_Gaiden_EN_v0_2_8.iso
+xdelta3 -d -s "Super Robot Taisen - Original Generation Gaiden [J].iso" SRW_OG_Gaiden_EN_v0_2_9.xdelta OG_Gaiden_EN_v0_2_9.iso
 
 ## Round-trip
 Verified: applying the patch to the JP base above reproduces the result ISO byte-for-byte
-(decoded md5 == 171f7fca4d7192bbd066f1d2925c31c9).
+(decoded output cmp-identical to the release ISO, md5 == de91ab6da80135e932a7c58d8dec8271).

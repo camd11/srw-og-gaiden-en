@@ -1,5 +1,49 @@
 # Changelog
 
+## 0.2.9 (July 2026) — community bug round: backlog crash, banners, VN renderer (cumulative)
+
+Cumulative on top of 0.2.8. Patch: `SRW_OG_Gaiden_EN_v0_2_9.xdelta` (see `CHECKSUMS.txt`;
+round-trip verified). **Note:** this release patches the boot ELF (the VN banner renderer), so
+the PCSX2 game CRC changes from `1F76B2D9` to **`DF47D8DA`** — save states made on 0.2.8 will
+not load on 0.2.9. Memory-card saves are unaffected and carry over normally.
+
+This release fixes the bugs reported by the community on 0.2.8 (GitHub issues #6, #7, #8).
+Thank you to Soulgaijin, JorgeMario-V, coconono, and riohcx — screenshots and exact repro
+locations made these fixable.
+
+- **Backlog (Triangle) crash — fixed** (GitHub #7, #8). Opening the backlog during certain
+  dialogues (Kai/Radha's talk, Stage 4, and others) could freeze the game with music still
+  playing. Root cause: the backlog builder copied dialogue entries into fixed-size buffers with
+  no length cap — a long entry overran the caller's stack frame and destroyed its return
+  address. All three unbounded copies are now bounded (entry copy and both row copies), and the
+  row counter is clamped. The same overrun explains the backlog's **repeated sentences** and the
+  **speaker sprite disappearing** after closing the backlog — all three symptoms are gone.
+- **Skill Point award banner — fixed** (GitHub #8). Was garbled/scattered ("all pilots obtained
+  +5 pp" fragments); now renders `Skill Point acquired. All pilots +5PP.` cleanly.
+- **Story-recap scroll re-wrapped** (GitHub #8). The scrolling recap ("New Era year 188...")
+  ran off the right edge of the screen; every line now fits on-screen.
+- **CONTINUE-screen banner — fixed** (GitHub #8). The Continue? prompt shows the episode number
+  and title properly (a stray trailing `#` from the original template remains; it is visible in
+  the original bug report too and is cosmetic).
+- **Parts menu descriptions — fixed** (GitHub #8). Upgrade Parts item descriptions (Propellant
+  Tank, Repair Kit, ...) now display their full English text.
+- **VN-scene location banners — fixed** (GitHub #6). Location captions over story scenes
+  ("Transport - Hangar", "Earth Cradle - Interior", ...) garbled after the first punctuation.
+  This was a renderer bug, not a data bug: the banner drawer reads text strictly two bytes at a
+  time and desynced on the translation's one-byte space. Both banner drawers in the boot ELF now
+  treat a lone low byte as a one-byte space. No dialogue text path is touched.
+- In-game episode splash cards ("Episode N" + chapter title) render cleanly.
+- Boot slide version line reads 0.2.9.
+
+**Not fixed in this release:** the Stage-2 scrolling-intro freeze on real hardware via OPL
+(GitHub #1). It cannot be reproduced in an emulator. A candidate fix (relocating the intro event
+data lower on the disc, zero script changes) is posted on the issue as a separate opt-in
+hardware-test patch; it will fold into the next general release once an OPL user confirms it.
+
+Known issues that remain (see README *Known issues*): the OPL Stage-2 freeze above, the footer
+button-hint sprite labels (art, not text), Arado's battle quotes intermittently blank/garbled
+(GitHub #4 — no repro found in the data yet), and the small `#` on the CONTINUE dialog.
+
 ## 0.2.8 (July 2026) — community bug round: hardware crash, blank lists, dialogue re-layout (cumulative)
 
 Cumulative on top of 0.2.7. Patch: `SRW_OG_Gaiden_EN_v0_2_8.xdelta` (see `CHECKSUMS.txt`;
